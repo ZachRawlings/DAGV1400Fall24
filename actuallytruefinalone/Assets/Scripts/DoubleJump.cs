@@ -2,54 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleJump : MonoBehaviour
+public class DoubleJumpController : MonoBehaviour
 {
-    public float jumpForce = 5f;
-    public float gravity = -9.81f;
-    public float groundCheckDistance = 0.1f;
-    public LayerMask groundLayer;
+    public float moveSpeed = 5f;
+    public float jumpForce = 10f;
+    public int maxJumps = 2; // Allows for double jump
 
-    private CharacterController controller;
-    private Vector3 velocity;
+    private int jumpCount = 0; // Tracks the number of jumps
+    private Rigidbody2D rb;
     private bool isGrounded;
-    private int jumpCount;
+
+    public Transform groundCheck;
+    public LayerMask groundLayer;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        // Ground check using raycast
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
-        Debug.Log("Is Grounded: " + isGrounded); // Log whether grounded
-        Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.red);
+        HandleMovement();
+        HandleJump();
+        CheckGround();
+    }
+
+    void HandleMovement()
+    {
+        float moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+
+        if (moveInput != 0)
+        {
+            // Flip the character sprite based on movement direction
+            transform.localScale = new Vector3(Mathf.Sign(moveInput), 1f, 1f);
+        }
+    }
+
+    void HandleJump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGrounded || jumpCount < maxJumps)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumpCount++;
+            }
+        }
+    }
+
+    void CheckGround()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
         if (isGrounded)
         {
-            jumpCount = 0;
-            velocity.y = -0.5f;
+            jumpCount = 0; // Reset jump count when grounded
         }
-        else
-        {
-            velocity.y += gravity * Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isGrounded || jumpCount < 1)
-            {
-                Jump();
-            }
-        }
-
-        controller.Move(velocity * Time.deltaTime);
     }
 
-    void Jump()
+    private void OnDrawGizmos()
     {
-        velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-        jumpCount++;
+        // Visualize ground check
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(groundCheck.position, 0.1f);
     }
 }
