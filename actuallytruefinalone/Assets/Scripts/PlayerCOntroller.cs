@@ -9,6 +9,7 @@ public class SimpleCharacterController2D : MonoBehaviour
     public float secondJumpForce = 8f; // Height of the second jump
     public float fallMultiplier = 2.5f; // Fall speed multiplier when holding jump
     public LayerMask groundLayer; // Layer to define what is ground
+    public float GroundCheck = 0.65f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -76,6 +77,6 @@ public class SimpleCharacterController2D : MonoBehaviour
     {
         // Draw a ray for ground detection
         Gizmos.color = Color.red;
-        Gizmos.DrawLine((Vector2)transform.position, (Vector2)transform.position + Vector2.down * 1.1f);
+        Gizmos.DrawLine((Vector2)transform.position, (Vector2)transform.position + Vector2.down * GroundCheck);
     }
 }
