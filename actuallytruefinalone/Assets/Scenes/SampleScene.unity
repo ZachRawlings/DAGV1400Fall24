@@ -246,13 +246,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 187761322}
-  - component: {fileID: 187761325}
-  - component: {fileID: 187761332}
   - component: {fileID: 187761321}
+  - component: {fileID: 187761332}
   - component: {fileID: 187761328}
   - component: {fileID: 187761327}
   - component: {fileID: 187761330}
   - component: {fileID: 187761331}
+  - component: {fileID: 187761333}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -328,22 +328,6 @@ Transform:
   - {fileID: 32361686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &187761325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187761319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2d8f914d28ecc46aa20876800986c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key1: 261
-  key2: 97
-  direction1: 0
-  direction2: 180
 --- !u!50 &187761327
 Rigidbody2D:
   serializedVersion: 4
@@ -459,10 +443,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2d8f914d28ecc46aa20876800986c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key1: 100
-  key2: 97
+  key1: 275
+  key2: 276
   direction1: 0
   direction2: 180
+--- !u!114 &187761333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187761319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bccd2a29c108db44a32050c78991c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &234890423
 GameObject:
   m_ObjectHideFlags: 0
