@@ -8,7 +8,7 @@ public class SimpleCharacterController2D : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 10f; // Height of the first jump
     public float secondJumpForce = 8f; // Height of the second jump
-    public float fallMultiplier = 2.5f; // Fall speed multiplier when holding jump
+    public float fallMultiplier = 1.5f; // Fall speed multiplier when holding jump
     public LayerMask groundLayer; // Layer to define what is ground
     public float GroundCheck = 0.65f;
 
@@ -70,7 +70,7 @@ public class SimpleCharacterController2D : MonoBehaviour
         // Apply fall multiplier if the jump button is held
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
         }
     }
 
