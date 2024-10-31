@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd22ef1dfbfc90343a8cbb2b90893807, type: 3}
-  m_Name: HealthData
+  m_Name: healthData
   m_EditorClassIdentifier: 
   value: 1
