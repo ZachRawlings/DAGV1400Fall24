@@ -6799,7 +6799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c02dc5c931e5b4fa061f986cf6d65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleAmount: 10
+  minParticleAmount: 5
+  maxParticleAmount: 15
+  emissionInterval: 0.5
+  emissionCount: 3
 --- !u!199 &1910703423
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -10649,7 +10652,8 @@ ParticleSystem:
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
