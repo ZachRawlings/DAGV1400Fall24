@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SimpleCharacterController2D : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class SimpleCharacterController2D : MonoBehaviour
     {
         Move();
         Jump();
+        QuitGame();
     }
 
     private void Move()
@@ -81,4 +83,12 @@ public class SimpleCharacterController2D : MonoBehaviour
         Gizmos.DrawLine((Vector2)transform.position, (Vector2)transform.position + Vector2.down * GroundCheck);
     }
     
+    public void QuitGame()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+        }
 }
+
